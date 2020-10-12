@@ -1,0 +1,166 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="db" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Input_array" Type="InArgument(s:String[])" />
+  </x:Members>
+  <this:db.Input_array>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:db.Input_array>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>562.666666666667,1098.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>db_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="27">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="db" sap:VirtualizedContainerService.HintSize="376,934" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="db_prod_e" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_result" />
+      <Variable x:TypeArguments="x:String" Name="result_db" />
+      <Variable x:TypeArguments="sd:DataTable" Name="table_query" />
+      <Variable x:TypeArguments="x:String" Name="queryStr" />
+      <Variable x:TypeArguments="x:String" Name="filename" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[filename]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["01141160992_SBG_202006_20200728121020_1.zip/01141160992_SBG_202006_20200728121020_1.csv"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:DatabaseConnect DatabaseConnection="[db_prod_e]" DisplayName="Connect" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=dwh-commercial.database.windows.net;Initial Catalog=AXPOITDW50;User ID=dwhadmin;Password=o0BVEY3V7qmgC9" />
+    <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_12">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[queryStr]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select [DATA_VAL],[PIVA_DISTR] ,[PIVA_UDD],[PIVA_UDB],[DTG],[COD_REMI],[ID_REG_CLIM],[COD_PROF_PREL_STD],[TRATTAMENTO],[TIPO_CLIENTE],[UNIT_MIS_PREL],[PRELIEVO_GIORN_1],[PRELIEVO_GIORN_2],[PRELIEVO_GIORN_3] ,[PRELIEVO_GIORN_4],[PRELIEVO_GIORN_5] ,[PRELIEVO_GIORN_6] ,[PRELIEVO_GIORN_7] ,[PRELIEVO_GIORN_8],[PRELIEVO_GIORN_9],[PRELIEVO_GIORN_10],[PRELIEVO_GIORN_11],[PRELIEVO_GIORN_12],[PRELIEVO_GIORN_13],[PRELIEVO_GIORN_14] ,[PRELIEVO_GIORN_15],[PRELIEVO_GIORN_16] ,[PRELIEVO_GIORN_17],[PRELIEVO_GIORN_18],[PRELIEVO_GIORN_19] ,[PRELIEVO_GIORN_20],[PRELIEVO_GIORN_21] ,[PRELIEVO_GIORN_22] ,[PRELIEVO_GIORN_23] ,[PRELIEVO_GIORN_24] ,[PRELIEVO_GIORN_25],[PRELIEVO_GIORN_26],[PRELIEVO_GIORN_27],[PRELIEVO_GIORN_28],[PRELIEVO_GIORN_29],[PRELIEVO_GIORN_30],[PRELIEVO_GIORN_31] FROM [MISG_SBG1_data].[L0_MISG_SBG1_CONSUMI_SETTLEMENT#prod]  WHERE [FILE_PATH]='"+filename+"' AND [DATA_VAL]='"+Input_array(0)+"' AND [PIVA_DISTR]='"+Input_array(1)+"' AND [PIVA_UDD]='"+Input_array(2)+"' AND [PIVA_UDB]='"+Input_array(3)+"' AND [DTG]='"+Input_array(4)+"' AND [COD_REMI]='"+Input_array(5)+"' AND [ID_REG_CLIM]='"+Input_array(6)+"' AND [COD_PROF_PREL_STD]='"+Input_array(7)+"' AND [TRATTAMENTO]='"+Input_array(8)+"' AND [TIPO_CLIENTE]='"+Input_array(9)+"' AND [UNIT_MIS_PREL]='"+Input_array(10)+"' AND [PRELIEVO_GIORN_1]='"+Input_array(11)+"' AND [PRELIEVO_GIORN_2]='"+Input_array(12)+"' AND [PRELIEVO_GIORN_3]='"+Input_array(13)+"' AND [PRELIEVO_GIORN_4]='"+Input_array(14)+"' AND [PRELIEVO_GIORN_5]='"+Input_array(15)+"' AND [PRELIEVO_GIORN_6]='"+Input_array(16)+"' AND [PRELIEVO_GIORN_7]='"+Input_array(17)+"' AND [PRELIEVO_GIORN_8]='"+Input_array(18)+"' AND [PRELIEVO_GIORN_9]='"+Input_array(19)+"' AND [PRELIEVO_GIORN_10]='"+Input_array(20)+"' AND [PRELIEVO_GIORN_11]='"+Input_array(21)+"' AND [PRELIEVO_GIORN_12]='"+Input_array(22)+"' AND [PRELIEVO_GIORN_13]='"+Input_array(23)+"' AND [PRELIEVO_GIORN_14] ='"+Input_array(24)+"' AND [PRELIEVO_GIORN_15]='"+Input_array(25)+"' AND [PRELIEVO_GIORN_16]='"+Input_array(26)+"' AND [PRELIEVO_GIORN_17]='"+Input_array(27)+"' AND [PRELIEVO_GIORN_18]='"+Input_array(28)+"' AND [PRELIEVO_GIORN_19]='"+Input_array(29)+"' AND [PRELIEVO_GIORN_20]='"+Input_array(30)+"' AND [PRELIEVO_GIORN_21]='"+Input_array(31)+"' AND [PRELIEVO_GIORN_22]='"+Input_array(32)+"' AND [PRELIEVO_GIORN_23]='"+Input_array(33)+"' AND [PRELIEVO_GIORN_24]='"+Input_array(34)+"' AND [PRELIEVO_GIORN_25]='"+Input_array(35)+"' AND [PRELIEVO_GIORN_26]='"+Input_array(36)+"' AND [PRELIEVO_GIORN_27]='"+Input_array(37)+"' AND [PRELIEVO_GIORN_28]='"+Input_array(38)+"' AND [PRELIEVO_GIORN_29]='"+Input_array(39)+"' AND [PRELIEVO_GIORN_30]='"+Input_array(40)+"' AND [PRELIEVO_GIORN_31]='"+Input_array(41)+"' ;"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,154" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[queryStr]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select [DATA_VAL],[PIVA_DISTR] ,[PIVA_UDD],[PIVA_UDB],[DTG],[COD_REMI],[ID_REG_CLIM],[COD_PROF_PREL_STD],[TRATTAMENTO],[TIPO_CLIENTE],[UNIT_MIS_PREL],[PRELIEVO_GIORN_1],[PRELIEVO_GIORN_2],[PRELIEVO_GIORN_3] ,[PRELIEVO_GIORN_4],[PRELIEVO_GIORN_5] ,[PRELIEVO_GIORN_6] ,[PRELIEVO_GIORN_7] ,[PRELIEVO_GIORN_8],[PRELIEVO_GIORN_9],[PRELIEVO_GIORN_10],[PRELIEVO_GIORN_11],[PRELIEVO_GIORN_12],[PRELIEVO_GIORN_13],[PRELIEVO_GIORN_14] ,[PRELIEVO_GIORN_15],[PRELIEVO_GIORN_16] ,[PRELIEVO_GIORN_17],[PRELIEVO_GIORN_18],[PRELIEVO_GIORN_19] ,[PRELIEVO_GIORN_20],[PRELIEVO_GIORN_21] ,[PRELIEVO_GIORN_22] ,[PRELIEVO_GIORN_23] ,[PRELIEVO_GIORN_24] ,[PRELIEVO_GIORN_25],[PRELIEVO_GIORN_26],[PRELIEVO_GIORN_27],[PRELIEVO_GIORN_28],[PRELIEVO_GIORN_29],[PRELIEVO_GIORN_30],[PRELIEVO_GIORN_31] FROM [MISG_SBG1_data].[L0_MISG_SBG1_CONSUMI_SETTLEMENT#prod]  WHERE [FILE_PATH]='"+filename+"'  ;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_result]" DisplayName="Execute Query" ExistingDbConnection="[db_prod_e]" sap:VirtualizedContainerService.HintSize="334,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[queryStr]">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+    </ui:ExecuteQuery>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;Numero righe: &quot;+dt_result.Rows.Count.ToString]" />
+    <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[table_query]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[dt_result]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[dt_result.Rows.Count=0]" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,289.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_13" Text="No rows" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[queryStr]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="229.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="[&quot; row in db: &quot;+dt_result.Rows.Count.ToString]" />
+      </If.Else>
+    </If>
+    <ui:DatabaseDisconnect DatabaseConnection="[db_prod_e]" DisplayName="Disconnect" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+  </Sequence>
+</Activity>
