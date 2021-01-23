@@ -11,6 +11,8 @@ There some Uipath projects:
 -How to invoke Python code in Uipath
 
 
--How to invoke C# code in Uipath
+-How to invoke C# code in Uipath and how to make a for each cycle inside an assign activity
+
+
 
 
